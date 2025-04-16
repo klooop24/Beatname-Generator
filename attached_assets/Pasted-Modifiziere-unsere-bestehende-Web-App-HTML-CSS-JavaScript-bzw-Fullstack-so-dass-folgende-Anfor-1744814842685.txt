@@ -1,0 +1,56 @@
+Modifiziere unsere bestehende Web-App (HTML, CSS, JavaScript bzw. Fullstack) so, dass folgende Anforderungen erfüllt werden:
+
+Genres von BeatStars synchronisieren:
+
+Live- bzw. aktuelle Genre-Liste: Die App soll alle Genres, die bei BeatStars.com im Genre-Bereich aufgelistet sind, 1:1 übernehmen und aktuell halten.
+
+Implementierung: Falls eine offizielle API nicht verfügbar ist, verwende einen Scraping-Mechanismus (z. B. mittels Puppeteer oder Cheerio), um die Genre-Liste direkt von BeatStars auszulesen und in einem Dropdown-Menü anzuzeigen.
+
+Echte Beat-Titel aus BeatStars-Beats extrahieren:
+
+Direkte Datenextraktion: Beim Auswählen eines Genres sollen nicht lokale oder AI-generierte Titel verwendet werden, sondern die echten Beat-Titel, die unter dem entsprechenden Genre auf BeatStars.com in den Beat-Listings zu finden sind.
+
+Filterung: Extrahiere aus dem HTML der Beat-Listings ausschließlich den reinen Beat-Titel und filtere unerwünschte Zusatztexte (z. B. "Free Type Beat 2025" oder Ähnliches) heraus, sodass nur ein kreativer, authentischer Titel übrigbleibt.
+
+Verbesserte AI-Rephrasing-Funktion:
+
+Korrekte Neuinterpretation: Die Rephrase-Funktion soll mittels der OpenAI-API (mit dem vom Nutzer angegebenen API-Key) den aktuellen Beat-Titel auf Basis seines Sinns wirklich neu formulieren – nicht nur Wörter vertauschen oder zusätzliche Wörter anhängen.
+
+Rephrase-Prompt: Verwende einen präzisen Prompt wie:
+„Bitte formuliere den folgenden Beat-Titel so um, dass seine Bedeutung erhalten bleibt, aber mit anderen Worten und in einem frischen, kreativen Stil. Achte darauf, keine zusätzlichen Wörter anzuhängen oder die ursprüngliche Länge zu erhöhen.“
+
+Kein Akkumulieren: Stelle sicher, dass wiederholtes Klicken auf den Rephrase-Button den ursprünglichen Beat-Titel neu interpretiert und nicht fortlaufend Wörter hinzufügt.
+
+Erweiterte Meta-Daten im Beat-Titel:
+
+Metafelder: Ergänze unterhalb oder in den Eingabefeldern drei weitere Einstellungsfelder, die in den finalen Beat-Titel eingefügt werden:
+
+Key-Selektor: Ein Dropdown-Menü zur Auswahl des Keys (z. B. C, C-Sharp, D, D-Sharp, E, F, F-Sharp, G, G-Sharp, A, A-Sharp, B).
+
+Tonart: Ein weiteres Dropdown-Menü zur Auswahl von "Major" oder "Minor". Standardmäßig soll z. B. „Minor“ gewählt sein.
+
+BPM: Ein Zahlenfeld, das standardmäßig auf „130 BPM“ gesetzt ist.
+
+Collaborator: Ein Textfeld oder fixierter Text, der standardmäßig „Add FGY Beats“ lautet und immer am Ende angehängt wird.
+
+Finale Syntax: Wenn ein Beat-Titel generiert wird, soll nur der reine Beat-Titel (aus BeatStars extrahiert) verändert werden. Die Meta-Daten bleiben unverändert und werden als Suffix im Format hinzugefügt, z. B.:
+
+beattitel + "" + [key][Maj/Min] + "" + [BPM]bpm + " @fgybeats"
+
+Beispiele:
+
+„coole Beats_dMin_130bpm @fgybeats“
+
+„funky Vibes_f#Maj_87bpm @fgybeats“
+
+Funktionale Buttons und Workflow:
+
+Generate-Button: Ruft für das aktuell gewählte Genre einen echten Beat-Titel von BeatStars ab (nach Filterung) und kombiniert ihn mit den Meta-Daten (Key, Tonart, BPM, Collaborator).
+
+Copy-Button: Kopiert den vollständigen Titel in die Zwischenablage.
+
+Rephrase-Button: Nutzt die OpenAI-API, um den reinen Beat-Titel basierend auf dessen Bedeutung neu zu formulieren – ohne die Meta-Daten zu verändern.
+
+Manuelle Bearbeitung: Der Nutzer kann den generierten Titel (ohne die angehängte Syntax) auch manuell anpassen, bevor er den Rephrase-Button drückt.
+
+Ziel ist es, dass die App ausschließlich mit echten, von BeatStars.com stammenden Daten arbeitet, dass die Genre-Liste aktuell und vollständig ist, und dass die Rephrase-Funktion zuverlässig den inhaltlichen Sinn umschreibt – ohne unsaubere Wortaddition. Ergänze außerdem die zusätzlichen Felder für Key, BPM und Collaborator, sodass der finale Beat-Titel immer dem festen Format entspricht.

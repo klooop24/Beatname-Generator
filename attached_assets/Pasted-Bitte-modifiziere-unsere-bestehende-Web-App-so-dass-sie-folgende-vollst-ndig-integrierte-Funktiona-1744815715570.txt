@@ -1,0 +1,70 @@
+Bitte modifiziere unsere bestehende Web-App so, dass sie folgende, vollständig integrierte Funktionalitäten umfasst:
+
+Dynamische Genre-Synchronisation von BeatStars:
+
+Live-Daten: Die App soll alle Genres, wie sie aktuell auf BeatStars.com im entsprechenden Genre-Bereich angezeigt werden, abrufen und anzeigen.
+
+Umsetzung: Nutze einen Scraping-Mechanismus (z. B. mit Puppeteer oder Cheerio) oder, falls verfügbar, eine offizielle API, um die aktuelle Genre-Liste dynamisch abzurufen. Diese Genres sollen in einem Dropdown-Menü erscheinen, sodass der Nutzer stets die aktuellen Kategorien wählen kann.
+
+Echte Beat-Titel direkt von BeatStars extrahieren:
+
+Datenquelle: Anstatt eines statischen oder AI-generierten Datensatzes sollen die Beat-Titel direkt aus den Beat-Listings von BeatStars entnommen werden – analog zu dem, was ein Nutzer beim Auswählen eines Genres sieht.
+
+Filterung: Implementiere ein Parsing, das ausschließlich den reinen Beat-Titel extrahiert und dabei unerwünschte Zusätze (wie „Free Type Beat 2025“ oder ähnliche Werbeeinblendungen) herausfiltert, sodass nur der authentische, nutzergenerierte Titel übrig bleibt.
+
+Verbesserte AI-Rephrasing-Funktion:
+
+Exakte Neuformulierung: Der vorhandene Rephrase-Button soll den aktuell angezeigten Beat-Titel (ohne die Meta-Suffixe) mittels der OpenAI-API wirklich neu formulieren – und zwar so, dass der semantische Sinn erhalten bleibt, ohne dass Wörter lediglich vertauscht oder anhängig ergänzt werden.
+
+Rephrase-Prompt: Verwende in deinem API-Aufruf folgenden Text als Prompt:
+
+„Bitte formuliere den folgenden Beat-Titel so um, dass seine ursprüngliche Bedeutung vollständig erhalten bleibt, aber in einem frischen, kreativen Stil wiedergegeben wird. Verändere weder die grundlegende Bedeutung noch füge zusätzliche Wörter aneinander – generiere einen komplett neu formulierten, aber inhaltlich vergleichbaren Beat-Titel: '[Original Beat-Titel]'.“
+
+Originalbasis: Achte darauf, dass jeder Rephrase-Vorgang immer vom ursprünglichen, unveränderten Beat-Titel ausgeht und nicht vom bereits mehrfach umformulierten Ergebnis, um kumulative Fehler zu vermeiden.
+
+Meta-Daten und finale Formatierung des Beat-Titels:
+
+Ergänzende Felder: Füge der App drei zusätzliche Eingabefelder ein:
+
+Key: Ein Dropdown-Menü zur Auswahl der Tonart (z. B. C, C-Sharp, D, D-Sharp, E, F, F-Sharp, G, G-Sharp, A, A-Sharp, B). Der ausgewählte Wert für den Key soll in Kleinbuchstaben (z. B. „f#“) angezeigt werden.
+
+Tonart: Ein Dropdown-Menü zur Auswahl zwischen „Major“ und „Minor“. Standardmäßig soll „Minor“ gewählt sein (wobei „Min“ als Abkürzung, z. B. „dMin“, beibehalten wird, wenn das Sinn macht).
+
+BPM: Ein Zahlenfeld, das standardmäßig den Wert „130“ enthält und immer in kleingeschriebener Form als „130bpm“ dargestellt wird.
+
+Collaborator: Füge am Ende des finalen Beat-Titels standardmäßig „@fgybeats“ ein.
+
+Finale Syntax: Der generierte reine Beat-Titel (nur aus BeatStars extrahiert und ggf. per Rephrase neu formuliert) wird mit den Meta-Daten verknüpft, sodass das finale Format folgendermaßen aussieht:
+
+css
+Kopieren
+[beat-titel]_[key + Tonart]_[BPM]bpm @fgybeats
+Beispiel:
+coole beats_dMin_130bpm @fgybeats
+
+Automatische Formatierung: Sorge dafür, dass der Beat-Titel in Kleinbuchstaben (sofern gewünscht) und alle zusätzlichen Elemente exakt formatiert ausgegeben werden.
+
+Funktionalität und Workflow:
+
+Generate-Button: Beim Klick soll der Button folgendes auslösen:
+
+Abruf des gewählten Genres
+
+Dynamisches Scrapen der entsprechenden Beat-Listings von BeatStars
+
+Extraktion und Filterung eines zufälligen, echten Beat-Titels
+
+Kombinieren des extrahierten Titels mit den aktuell ausgewählten Meta-Daten (Key, Tonart, BPM, Collaborator) im finalen Format.
+
+Copy-Button: Ein Copy-Button soll den finalen Beat-Titel (inklusive Meta-Daten) in die Zwischenablage kopieren.
+
+Rephrase-Button: Der Rephrase-Button startet den API-Call mit der oben definierten, präzisen Anweisung.
+
+Editierbare Felder: Der Nutzer kann den reinen Beat-Titel vor der Neuinterpretation manuell anpassen – jedoch dürfen die Meta-Daten (das Suffix) unverändert bleiben.
+
+Favoriten-Funktion: (Optional) Sollten Favoriten gespeichert und exportiert werden, muss diese Funktion ebenfalls mit dem finalen Beat-Titel samt Meta-Daten kompatibel sein.
+
+Deployment und Test:
+
+Local vs. Deployment: Bitte stelle sicher, dass alle Funktionen (insbesondere das Scraping und externe API-Aufrufe) unter Produktionsbedingungen (deployt auf einem geeigneten Server, z. B. auf Heroku oder Netlify) getestet werden, da lokale Einschränkungen (CORS, HTTPS) Einfluss nehmen können.
+

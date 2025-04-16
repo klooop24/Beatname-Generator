@@ -1,0 +1,62 @@
+rstelle eine Web-App (z. B. als Single-Page-Application unter Verwendung von HTML, CSS und JavaScript oder alternativ mit einem Fullstack-Ansatz wie Node.js/Express), die Beatmakern und HipHop-Produzenten folgende Funktionen bietet:
+
+Genre-Auswahl basierend auf BeatStars-Daten:
+
+Nutze die Genres, die auf BeatStars.com angeboten werden (z. B. Hip-Hop, Trap, R&B, etc.).
+
+Falls keine direkte API-Integration oder Schnittstelle möglich ist (da es sich nicht um deine Webseite handelt), erstelle im Vorfeld ein statisches JSON-Objekt oder Array, das diese Genres enthält und eventuell auch schon eine zugehörige Liste echter, von Nutzern generierter Beat-Titel pro Genre (vorausgefiltert, sodass keine unerwünschte Werbung wie „free Beats, wenn du 20 kaufst“ enthalten ist).
+
+Implementiere ein Dropdown-Menü (oder eine andere Auswahlmöglichkeit), in dem der User ein Genre auswählen kann.
+
+Beat-Titel Generierung aus Nutzerdaten:
+
+Füge einen Button mit der Beschriftung „Generate“ ein.
+
+Beim Klicken auf diesen Button soll die App:
+
+Den aktuell ausgewählten Genre-Wert ermitteln
+
+Zufällig einen echten Beat-Titel aus den bereits gespeicherten Titeln (dem vorab extrahierten Datensatz von BeatStars bzw. den Nutzertiteln) auswählen
+
+Prüfen, ob der Titel unerwünschte Inhalte (Werbetexte) enthält – gegebenenfalls diesen Titel verwerfen und einen neuen zufällig auswählen.
+
+Der so ermittelte Beat-Titel wird dann in ein Textfeld angezeigt.
+
+Anzeige, Copy-Funktion und manuelle Anpassung:
+
+Implementiere ein Textfeld, in dem der generierte Beat-Titel angezeigt wird.
+
+Füge einen großen „Kopieren“-Button hinzu, der den angezeigten Beat-Titel direkt in die Zwischenablage kopiert (mithilfe der Clipboard-API oder eines alternativen JavaScript-Ansatzes).
+
+Erlaube dem Nutzer, den angezeigten Beat-Titel auch manuell zu ändern – also in das Textfeld direkt hineinzuschreiben.
+
+Neu Interpretieren-Funktion (Rephrase):
+
+Ergänze einen „Neu interpretieren“-Button.
+
+Dieser soll – entweder über eine einfache rephrase-Logik, über einen zuvor integrierten KI-Textumformungs-Service oder über eine Dummy-Funktion – den aktuell angezeigten (ggf. manuell angepassten) Beat-Titel kreativ neu formulieren und alternative Vorschläge präsentieren.
+
+Die Ausgabe der Neuinterpretation soll ebenfalls in dem Textfeld erscheinen und dem Nutzer erneut die Option bieten, den neuen Titel zu kopieren oder weiter anzupassen.
+
+Favoritenliste und Export:
+
+Füge eine Möglichkeit hinzu, den aktuell angezeigten Beat-Titel als Favoriten zu speichern.
+
+Zeige eine Favoritenliste (z. B. in einer Sidebar oder als Bereich unterhalb des Hauptbereichs) an, in der alle gespeicherten Titel gesammelt werden.
+
+Ergänze einen „Exportieren“-Button, der es ermöglicht, die gesamte Favoritenliste als Textdatei oder in einem anderen geeigneten Format herunterzuladen bzw. in die Zwischenablage zu kopieren.
+
+Design und Usability:
+
+Gestalte die Benutzeroberfläche übersichtlich, responsiv und benutzerfreundlich.
+
+Sorge dafür, dass der Code gut kommentiert und modular aufgebaut ist, sodass eine spätere Erweiterung (z. B. Integration von echten BeatStars-Daten via API, falls verfügbar) einfach möglich ist.
+
+Achte darauf, dass ausschließlich der reine Beat-Titel angezeigt wird – keine zusätzlichen Werbetexte.
+
+Allgemeine Hinweise zur Umsetzung:
+
+Falls der Zugriff auf BeatStars-Daten in Echtzeit nicht möglich ist, erarbeite einen Mechanismus, der die Daten beim Start (manuell per Scraping bzw. über eine Einmal-Extraktion) in einem statischen Datensatz speichert und im Code verwendet.
+
+Denke daran, dass es wichtig ist, echte Nutzerdaten (Beat-Titel) zu verwenden, damit die App authentische Ergebnisse liefert, die den tatsächlichen Inhalten von BeatStars entsprechen.
+
